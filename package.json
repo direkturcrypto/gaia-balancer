@@ -24,6 +24,7 @@
   "dependencies": {
     "axios": "^1.8.4",
     "express": "^4.18.2",
+    "ethers": "^6.13.5",
     "winston": "^3.11.0"
   },
   "devDependencies": {
