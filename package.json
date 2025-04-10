@@ -1,0 +1,32 @@
+{
+  "name": "gaia-balancer",
+  "version": "1.0.0",
+  "description": "High-performance load balancer for Gaia API endpoints with automatic failover and API key rotation",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yourusername/gaia-balancer.git"
+  },
+  "keywords": [
+    "gaia",
+    "load-balancer",
+    "api",
+    "llm",
+    "ai"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.8.4",
+    "express": "^4.18.2",
+    "winston": "^3.11.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.3"
+  }
+}
