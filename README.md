@@ -92,8 +92,12 @@ curl -X POST http://localhost:3000/v1/embeddings \
 
 ## Environment Variables
 
-- `NODE_ENV`: Set to 'production' to disable debug logging
-- `PORT`: Server port (default: 3000)
+| Variable | Description | Required | Default |
+|----------|-------------|----------|---------|
+| `OPENROUTER_API_KEY` | API key for OpenRouter service | Yes | - |
+| `OPENROUTER_FALLBACK_ENABLED` | Enable/disable OpenRouter fallback feature | No | false |
+| `NODE_ENV` | Environment mode (development/production) | No | development |
+| `PORT`: Server port (default: 3000)
 
 ## Error Handling
 
@@ -124,4 +128,33 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
 
-MIT License - see LICENSE file for details 
+MIT License - see LICENSE file for details
+
+### OpenRouter Fallback
+
+The system includes a fallback mechanism to OpenRouter when Gaia hosts are rate-limited. This feature can be enabled or disabled:
+
+1. **Enable/Disable via Environment Variable**:
+   ```bash
+   # Enable fallback
+   export OPENROUTER_FALLBACK_ENABLED=true
+   
+   # Disable fallback
+   export OPENROUTER_FALLBACK_ENABLED=false
+   ```
+
+2. **Enable/Disable via Code**:
+   ```javascript
+   const requestHandler = new RequestHandler();
+   
+   // Enable fallback
+   requestHandler.setOpenRouterFallbackEnabled(true);
+   
+   // Disable fallback
+   requestHandler.setOpenRouterFallbackEnabled(false);
+   ```
+
+When fallback is disabled:
+- The system will not attempt to use OpenRouter even when Gaia hosts are rate-limited
+- All requests will continue to be processed through Gaia hosts
+- Rate limit errors will be handled according to normal retry logic 
